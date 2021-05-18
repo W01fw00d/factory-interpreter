@@ -1,6 +1,6 @@
 {
   "name": "factory-interpreter",
-  "description": "A 'Factory Programming Language' interpreter in JavaScript",
+  "description": "A 'Factory Programming Language' parser & interpreter written in JavaScript",
   "author": "https://github.com/W01fw00d",
   "version": "0.1.0",
   "scripts": {
