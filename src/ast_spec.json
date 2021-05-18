@@ -1,0 +1,8 @@
+{
+  "assigment": {
+    "type": "assign",
+    "operator": "=",
+    "left": { "type": "const", "value": "user" },
+    "right": { "type": "string", "value": "Gabriel Romay" }
+  }
+}

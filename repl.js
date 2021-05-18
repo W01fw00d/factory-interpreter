@@ -1,10 +1,12 @@
-var repl = require("repl");
-var littleLisp = require("./littlelisp").littleLisp;
+const repl = require("repl");
+
+const parser = require("./src/parser").parser;
+const interpreter = require("./src/interpreter").interpreter;
 
 repl.start({
   prompt: "> ",
-  eval: function(cmd, context, filename, callback) {
-    var ret = littleLisp.interpret(littleLisp.parse(cmd));
+  eval: (cmd, context, filename, callback) => {
+    const ret = interpreter.interpret(parser.parse(cmd));
     callback(null, ret);
-  }
+  },
 });

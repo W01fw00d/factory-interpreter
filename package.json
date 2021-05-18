@@ -1,10 +1,12 @@
 {
   "name": "factory-interpreter",
   "description": "A 'Factory Programming Language' interpreter in JavaScript",
-  "author": "Mary Rose Cook <mary@maryrosecook.com> (https://maryrosecook.com/)",
+  "author": "https://github.com/W01fw00d",
   "version": "0.1.0",
   "scripts": {
-    "test": "jasmine *.spec.js",
+    "test": "jasmine src/*.spec.js",
+    "test-parser": "jasmine src/parser.spec.js",
+    "test-interpreter": "jasmine src/interpreter.spec.js",
     "interface": "node repl.js"
   },
   "devDependencies": {
