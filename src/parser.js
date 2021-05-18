@@ -7,7 +7,8 @@
       const parseValue = (value) => value.split(`"`).join(``);
       const formatWord = (word) => (word ? word.toLowerCase() : word);
 
-      const words = expression.split(" ");
+      const words = expression.trim().split(" ");
+      console.log("words", words);
 
       let result = {};
 

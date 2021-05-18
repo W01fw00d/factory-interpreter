@@ -24,17 +24,26 @@ describe("Factory Parser", () => {
 
   describe("Call Function", () => {
     it("Console log with single arg", () => {
-      const input = `Show "message".`;
+      const input = `Show "user".`;
       const parsed = parser.parse(input);
       console.log(input, "=>", parsed);
       expect(parsed).toEqual([AST.call.singleArg]);
     });
 
     /* it("Console log with 2 args", () => {
-      const input = `Show "message".`;
+      const input = `Show "user".`;
       const parsed = parser.parse(input);
       console.log(input, "=>", parsed);
       expect(parsed).toEqual([AST.call.multiArgs]);
     }); */
+  });
+
+  describe("Sequencial statements", () => {
+    it("Assign and function call", () => {
+      const input = `"user" box stores "Gabriel Romay". Show "user".`;
+      const parsed = parser.parse(input);
+      console.log(input, "=>", parsed);
+      expect(parsed).toEqual([AST.assignment.const, AST.call.singleArg]);
+    });
   });
 });

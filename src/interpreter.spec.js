@@ -27,14 +27,25 @@ describe("Factory Interpreter", () => {
       const input = [AST.call.singleArg];
       const interpreted = interpreter.interpret(input);
       console.log(input, "=>", interpreted);
-      expect(interpreted).toEqual(`console.log(message);`);
+      expect(interpreted).toEqual(`console.log(user);`);
     });
 
     /* it("Console Log with 2 args", () => {
       const input = [AST.call.multiArgs];
       const interpreted = interpreter.interpret(input);
       console.log(input, "=>", interpreted);
-      expect(interpreted).toEqual(`console.log(message, counter);`);
+      expect(interpreted).toEqual(`console.log(user, counter);`);
     }); */
+  });
+
+  describe("Sequencial statements", () => {
+    it("Assign and function call", () => {
+      const input = [AST.assignment.const, AST.call.singleArg];
+      const interpreted = interpreter.interpret(input);
+      console.log(input, "=>", interpreted);
+      expect(interpreted).toEqual(
+        `const user = "Gabriel Romay";console.log(user);`
+      );
+    });
   });
 });
