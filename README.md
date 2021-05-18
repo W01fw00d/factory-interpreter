@@ -56,9 +56,10 @@ _Implemented:_
 
 _Pending:_
 
+- A `machine` is a function. You call a function by `turning on` a `machine`
+
 - Variable `types` will be `inferred` as in vanilla JS.
 
-- A `machine` is a function. You call a function by `turning on` a `machine`
 - Boolean true = `yes`, false = `no`
 
 - An object is a `closet`, object atributes are `drawers`
