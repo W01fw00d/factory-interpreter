@@ -21,4 +21,13 @@ describe("Factory Parser", () => {
       expect(parsed).toEqual([AST.assignment.let]);
     });
   });
+
+  /*  describe("JS APIs", () => {
+    it("Console log", () => {
+      const input = `Show "message".`;
+      const parsed = parser.parse(input);
+      console.log(input, "=>", parsed);
+      expect(parsed).toEqual([AST.call]);
+    });
+  }); */
 });

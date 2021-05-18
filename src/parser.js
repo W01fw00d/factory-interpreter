@@ -5,13 +5,14 @@
 
     return expressions.map((expression) => {
       const parseValue = (value) => value.split(`"`).join(``);
+      const formatWord = (word) => (word ? word.toLowerCase() : word);
 
       const words = expression.split(" ");
 
       let typeOfBox = "const";
       let expressionTypeIndex = 2;
       let valueIndex = 3;
-      if (words[1] === "opened") {
+      if (formatWord(words[1]) === "opened") {
         typeOfBox = "let";
         expressionTypeIndex++;
         valueIndex++;
@@ -20,7 +21,8 @@
       const assignedValue = words.slice(valueIndex, words.length).join(" ");
 
       return {
-        type: words[expressionTypeIndex] === "stores" ? "assign" : null,
+        type:
+          formatWord(words[expressionTypeIndex]) === "stores" ? "assign" : null,
         operator: "=",
         left: {
           type: typeOfBox,

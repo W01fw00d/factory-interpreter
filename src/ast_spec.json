@@ -12,5 +12,10 @@
       "left": { "type": "let", "value": "user" },
       "right": { "type": "string", "value": "Gabriel Romay" }
     }
+  },
+  "call": {
+    "type": "call",
+    "func": { "type": "var", "value": "console.log" },
+    "args": [{ "type": "var", "value": "message" }]
   }
 }
