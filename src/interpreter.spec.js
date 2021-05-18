@@ -22,12 +22,19 @@ describe("Factory Interpreter", () => {
     });
   });
 
-  describe("JS APIs", () => {
-    it("Console Log", () => {
-      const input = [AST.call];
+  describe("Call Function", () => {
+    it("Console Log with single arg", () => {
+      const input = [AST.call.singleArg];
       const interpreted = interpreter.interpret(input);
       console.log(input, "=>", interpreted);
       expect(interpreted).toEqual(`console.log(message);`);
     });
+
+    /* it("Console Log with 2 args", () => {
+      const input = [AST.call.multiArgs];
+      const interpreted = interpreter.interpret(input);
+      console.log(input, "=>", interpreted);
+      expect(interpreted).toEqual(`console.log(message, counter);`);
+    }); */
   });
 });

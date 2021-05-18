@@ -14,8 +14,18 @@
     }
   },
   "call": {
-    "type": "call",
-    "func": { "type": "var", "value": "console.log" },
-    "args": [{ "type": "var", "value": "message" }]
+    "singleArg": {
+      "type": "call",
+      "func": { "type": "var", "value": "console.log" },
+      "args": [{ "type": "var", "value": "message" }]
+    },
+    "multiArgs": {
+      "type": "call",
+      "func": { "type": "var", "value": "customFunction" },
+      "args": [
+        { "type": "var", "value": "message" },
+        { "type": "var", "value": "counter" }
+      ]
+    }
   }
 }
