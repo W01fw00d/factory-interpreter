@@ -6,7 +6,7 @@ describe("Factory Interpreter", () => {
   const AST_JSON = fs.readFileSync("src/ast_spec.json");
   const AST = JSON.parse(AST_JSON);
 
-  describe("Assigment", () => {
+  describe("Assignment", () => {
     it("Interpret const string assignment", () => {
       const input = [AST.assignment.const];
       const interpreted = interpreter.interpret(input);
@@ -19,6 +19,15 @@ describe("Factory Interpreter", () => {
       const interpreted = interpreter.interpret(input);
       console.log(input, "=>", interpreted);
       expect(interpreted).toEqual(`let user = "Gabriel Romay";`);
+    });
+  });
+
+  describe("JS APIs", () => {
+    it("Console Log", () => {
+      const input = [AST.call];
+      const interpreted = interpreter.interpret(input);
+      console.log(input, "=>", interpreted);
+      expect(interpreted).toEqual(`console.log(message);`);
     });
   });
 });

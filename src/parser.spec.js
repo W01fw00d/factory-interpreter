@@ -6,7 +6,7 @@ describe("Factory Parser", () => {
   const AST_JSON = fs.readFileSync("src/ast_spec.json");
   const AST = JSON.parse(AST_JSON);
 
-  describe("Assigment", () => {
+  describe("Assignment", () => {
     it("Parse const string assignment", () => {
       const input = `"user" box stores "Gabriel Romay".`;
       const parsed = parser.parse(input);
@@ -22,12 +22,12 @@ describe("Factory Parser", () => {
     });
   });
 
-  /*  describe("JS APIs", () => {
+  describe("JS APIs", () => {
     it("Console log", () => {
       const input = `Show "message".`;
       const parsed = parser.parse(input);
       console.log(input, "=>", parsed);
       expect(parsed).toEqual([AST.call]);
     });
-  }); */
+  });
 });
