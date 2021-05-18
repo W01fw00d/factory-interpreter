@@ -1,8 +1,16 @@
 {
-  "assigment": {
-    "type": "assign",
-    "operator": "=",
-    "left": { "type": "const", "value": "user" },
-    "right": { "type": "string", "value": "Gabriel Romay" }
+  "assignment": {
+    "const": {
+      "type": "assign",
+      "operator": "=",
+      "left": { "type": "const", "value": "user" },
+      "right": { "type": "string", "value": "Gabriel Romay" }
+    },
+    "let": {
+      "type": "assign",
+      "operator": "=",
+      "left": { "type": "let", "value": "user" },
+      "right": { "type": "string", "value": "Gabriel Romay" }
+    }
   }
 }

@@ -6,15 +6,24 @@
     return expressions.map((expression) => {
       const parseValue = (value) => value.split(`"`).join(``);
 
-      // `"user" box stores "Gabriel Romay".`
       const words = expression.split(" ");
-      const assignedValue = words.slice(3, words.length).join(" ");
+
+      let typeOfBox = "const";
+      let expressionTypeIndex = 2;
+      let valueIndex = 3;
+      if (words[1] === "opened") {
+        typeOfBox = "let";
+        expressionTypeIndex++;
+        valueIndex++;
+      }
+
+      const assignedValue = words.slice(valueIndex, words.length).join(" ");
 
       return {
-        type: words[2] === "stores" ? "assign" : null,
+        type: words[expressionTypeIndex] === "stores" ? "assign" : null,
         operator: "=",
         left: {
-          type: words[1] === "box" ? "const" : "let",
+          type: typeOfBox,
           value: parseValue(words[0]),
         },
         right: {

@@ -1,25 +1,24 @@
 const fs = require("fs");
 
-const t = require("./parser").parser;
+const parser = require("./parser").parser;
 
-describe("Factory Parser", function () {
+describe("Factory Parser", () => {
   const AST_JSON = fs.readFileSync("src/ast_spec.json");
   const AST = JSON.parse(AST_JSON);
 
-  describe("Assigment", function () {
+  describe("Assigment", () => {
     it("Parse const string assignment", () => {
       const input = `"user" box stores "Gabriel Romay".`;
-      const parsed = t.parse(input);
+      const parsed = parser.parse(input);
       console.log(input, "=>", parsed);
-      expect(parsed).toEqual([AST.assigment]);
+      expect(parsed).toEqual([AST.assignment.const]);
     });
 
-    /* it("Interpret const string assignment", function () {
-      expect(
-        t.interpret([AST.assigment]).toEqual(`const user = "Gabriel Romay";`)
-      );
-    }); */
-
-    // it("Parse let assigment")
+    it("Parse let string assignment", () => {
+      const input = `"user" opened box stores "Gabriel Romay".`;
+      const parsed = parser.parse(input);
+      console.log(input, "=>", parsed);
+      expect(parsed).toEqual([AST.assignment.let]);
+    });
   });
 });
