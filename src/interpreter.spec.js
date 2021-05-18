@@ -14,6 +14,11 @@ describe("Factory Interpreter", () => {
       expect(interpreted).toEqual(`const user = "Gabriel Romay";`);
     });
 
-    // it("Interpret let assigment")
+    it("Interpret let string assignment", () => {
+      const input = [AST.assignment.let];
+      const interpreted = interpreter.interpret(input);
+      console.log(input, "=>", interpreted);
+      expect(interpreted).toEqual(`let user = "Gabriel Romay";`);
+    });
   });
 });
