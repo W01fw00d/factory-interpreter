@@ -8,5 +8,6 @@ repl.start({
   eval: (cmd, context, filename, callback) => {
     const ret = interpreter.interpret(parser.parse(cmd));
     callback(null, ret);
+    eval(ret);
   },
 });

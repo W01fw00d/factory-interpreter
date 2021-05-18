@@ -25,6 +25,10 @@ You can run your own programs on the fly!
 npm run interface
 ```
 
+_Examples to run:_
+
+`"user" box stores "Gabriel Romay". Print "user".` : `const user = "Gabriel Romay";console.log(user);`
+
 # About the Factory Language
 
 A programming language for people that want to communicate through code but using plain `English`.

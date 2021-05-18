@@ -8,11 +8,10 @@
       const formatWord = (word) => (word ? word.toLowerCase() : word);
 
       const words = expression.trim().split(" ");
-      console.log("words", words);
 
       let result = {};
 
-      if (formatWord(words[0]) === "show") {
+      if (formatWord(words[0]) === "print") {
         result = {
           type: "call",
           func: { type: "var", value: "console.log" },
