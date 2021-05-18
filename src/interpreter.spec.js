@@ -38,7 +38,7 @@ describe("Factory Interpreter", () => {
     }); */
   });
 
-  describe("Sequencial statements", () => {
+  describe("Sequencial expressions", () => {
     it("Assign and function call", () => {
       const input = [AST.assignment.const, AST.call.singleArg];
       const interpreted = interpreter.interpret(input);

@@ -38,7 +38,7 @@ describe("Factory Parser", () => {
     }); */
   });
 
-  describe("Sequencial statements", () => {
+  describe("Sequencial expressions", () => {
     it("Assign and function call", () => {
       const input = `"user" box stores "Gabriel Romay". Print "user".`;
       const parsed = parser.parse(input);
