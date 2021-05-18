@@ -1,24 +1,24 @@
-;(function(exports) {
+(function (exports) {
   var library = {
-    first: function(x) {
+    first: function (x) {
       return x[0];
     },
 
-    rest: function(x) {
+    rest: function (x) {
       return x.slice(1);
     },
 
-    print: function(x) {
+    print: function (x) {
       console.log(x);
       return x;
-    }
+    },
   };
 
-  var Context = function(scope, parent) {
+  var Context = function (scope, parent) {
     this.scope = scope;
     this.parent = parent;
 
-    this.get = function(identifier) {
+    this.get = function (identifier) {
       if (identifier in this.scope) {
         return this.scope[identifier];
       } else if (this.parent !== undefined) {
@@ -28,8 +28,8 @@
   };
 
   var special = {
-    let: function(input, context) {
-      var letContext = input[1].reduce(function(acc, x) {
+    let: function (input, context) {
+      var letContext = input[1].reduce(function (acc, x) {
         acc.scope[x[0].value] = interpret(x[1], context);
         return acc;
       }, new Context({}, context));
@@ -37,10 +37,10 @@
       return interpret(input[2], letContext);
     },
 
-    lambda: function(input, context) {
-      return function() {
+    lambda: function (input, context) {
+      return function () {
         var lambdaArguments = arguments;
-        var lambdaScope = input[1].reduce(function(acc, x, i) {
+        var lambdaScope = input[1].reduce(function (acc, x, i) {
           acc[x.value] = lambdaArguments[i];
           return acc;
         }, {});
@@ -49,18 +49,20 @@
       };
     },
 
-    if: function(input, context) {
-      return interpret(input[1], context) ?
-        interpret(input[2], context) :
-        interpret(input[3], context);
-    }
+    if: function (input, context) {
+      return interpret(input[1], context)
+        ? interpret(input[2], context)
+        : interpret(input[3], context);
+    },
   };
 
-  var interpretList = function(input, context) {
+  var interpretList = function (input, context) {
     if (input.length > 0 && input[0].value in special) {
       return special[input[0].value](input, context);
     } else {
-      var list = input.map(function(x) { return interpret(x, context); });
+      var list = input.map(function (x) {
+        return interpret(x, context);
+      });
       if (list[0] instanceof Function) {
         return list[0].apply(undefined, list.slice(1));
       } else {
@@ -69,7 +71,7 @@
     }
   };
 
-  var interpret = function(input, context) {
+  var interpret = function (input, context) {
     if (context === undefined) {
       return interpret(input, new Context(library));
     } else if (input instanceof Array) {
@@ -81,17 +83,17 @@
     }
   };
 
-  var categorize = function(input) {
+  var categorize = function (input) {
     if (!isNaN(parseFloat(input))) {
-      return { type:'number', value: parseFloat(input) };
+      return { type: "number", value: parseFloat(input) };
     } else if (input[0] === '"' && input.slice(-1) === '"') {
-      return { type:'string', value: input.slice(1, -1) };
+      return { type: "string", value: input.slice(1, -1) };
     } else {
-      return { type:'identifier', value: input };
+      return { type: "identifier", value: input };
     }
   };
 
-  var parenthesize = function(input, list) {
+  var parenthesize = function (input, list) {
     if (list === undefined) {
       return parenthesize(input, []);
     } else {
@@ -109,30 +111,32 @@
     }
   };
 
-  var tokenize = function(input) {
-    return input.split('"')
-                .map(function(x, i) {
-                   if (i % 2 === 0) { // not in string
-                     return x.replace(/\(/g, ' ( ')
-                             .replace(/\)/g, ' ) ');
-                   } else { // in string
-                     return x.replace(/ /g, "!whitespace!");
-                   }
-                 })
-                .join('"')
-                .trim()
-                .split(/\s+/)
-                .map(function(x) {
-                  return x.replace(/!whitespace!/g, " ");
-                });
+  var tokenize = function (input) {
+    return input
+      .split('"')
+      .map(function (x, i) {
+        if (i % 2 === 0) {
+          // not in string
+          return x.replace(/\(/g, " ( ").replace(/\)/g, " ) ");
+        } else {
+          // in string
+          return x.replace(/ /g, "!whitespace!");
+        }
+      })
+      .join('"')
+      .trim()
+      .split(/\s+/)
+      .map(function (x) {
+        return x.replace(/!whitespace!/g, " ");
+      });
   };
 
-  var parse = function(input) {
+  var parse = function (input) {
     return parenthesize(tokenize(input));
   };
 
   exports.littleLisp = {
     parse: parse,
-    interpret: interpret
+    interpret: interpret,
   };
-})(typeof exports === 'undefined' ? this : exports);
+})(typeof exports === "undefined" ? this : exports);
