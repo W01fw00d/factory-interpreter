@@ -25,6 +25,10 @@ You can run your own programs on the fly!
 npm run interface
 ```
 
+_Examples to run:_
+
+`"user" box stores "Gabriel Romay". Print "user".` : `const user = "Gabriel Romay";console.log(user);`
+
 # About the Factory Language
 
 A programming language for people that want to communicate through code but using plain `English`.
@@ -46,15 +50,16 @@ _Implemented:_
 
 - An `opened box` it's a variable that can be modified. A `closed box` is a constant (cannot be modified). By default, a `box` it's a `closed box`
 
-- "`.`" divides code statements. That way, user can structure their "story" in paragraphs or lonely lines.
+- "`.`" divides code expressions. That way, user can structure their "story" in paragraphs or lonely lines.
 
 - This language is designed for `functional programming`, and ignores completely and shamelessly `OOP`.
 
 _Pending:_
 
+- A `machine` is a function. You call a function by `turning on` a `machine`
+
 - Variable `types` will be `inferred` as in vanilla JS.
 
-- A `machine` is a function. You call a function by `turning on` a `machine`
 - Boolean true = `yes`, false = `no`
 
 - An object is a `closet`, object atributes are `drawers`

@@ -12,5 +12,20 @@
       "left": { "type": "let", "value": "user" },
       "right": { "type": "string", "value": "Gabriel Romay" }
     }
+  },
+  "call": {
+    "singleArg": {
+      "type": "call",
+      "func": { "type": "var", "value": "console.log" },
+      "args": [{ "type": "var", "value": "user" }]
+    },
+    "multiArgs": {
+      "type": "call",
+      "func": { "type": "var", "value": "customFunction" },
+      "args": [
+        { "type": "var", "value": "user" },
+        { "type": "var", "value": "counter" }
+      ]
+    }
   }
 }

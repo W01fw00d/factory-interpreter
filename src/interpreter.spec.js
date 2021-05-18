@@ -6,7 +6,7 @@ describe("Factory Interpreter", () => {
   const AST_JSON = fs.readFileSync("src/ast_spec.json");
   const AST = JSON.parse(AST_JSON);
 
-  describe("Assigment", () => {
+  describe("Assignment", () => {
     it("Interpret const string assignment", () => {
       const input = [AST.assignment.const];
       const interpreted = interpreter.interpret(input);
@@ -19,6 +19,33 @@ describe("Factory Interpreter", () => {
       const interpreted = interpreter.interpret(input);
       console.log(input, "=>", interpreted);
       expect(interpreted).toEqual(`let user = "Gabriel Romay";`);
+    });
+  });
+
+  describe("Call Function", () => {
+    it("Console Log with single arg", () => {
+      const input = [AST.call.singleArg];
+      const interpreted = interpreter.interpret(input);
+      console.log(input, "=>", interpreted);
+      expect(interpreted).toEqual(`console.log(user);`);
+    });
+
+    /* it("Console Log with 2 args", () => {
+      const input = [AST.call.multiArgs];
+      const interpreted = interpreter.interpret(input);
+      console.log(input, "=>", interpreted);
+      expect(interpreted).toEqual(`console.log(user, counter);`);
+    }); */
+  });
+
+  describe("Sequencial expressions", () => {
+    it("Assign and function call", () => {
+      const input = [AST.assignment.const, AST.call.singleArg];
+      const interpreted = interpreter.interpret(input);
+      console.log(input, "=>", interpreted);
+      expect(interpreted).toEqual(
+        `const user = "Gabriel Romay";console.log(user);`
+      );
     });
   });
 });
